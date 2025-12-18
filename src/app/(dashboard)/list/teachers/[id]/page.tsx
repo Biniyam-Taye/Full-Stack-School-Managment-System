@@ -5,6 +5,8 @@ import FormContainer from "@/components/FormContainer";
 import Performance from "@/components/Performance";
 import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
+
+export const dynamic = "force-dynamic";
 import { Teacher } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";

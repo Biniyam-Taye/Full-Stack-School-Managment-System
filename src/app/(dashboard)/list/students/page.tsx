@@ -11,6 +11,8 @@ import Link from "next/link";
 
 import { auth } from "@clerk/nextjs/server";
 
+export const dynamic = "force-dynamic";
+
 type StudentList = Student & { class: Class };
 
 const StudentListPage = async ({

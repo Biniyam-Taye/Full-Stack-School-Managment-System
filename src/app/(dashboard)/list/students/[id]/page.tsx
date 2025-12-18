@@ -5,6 +5,8 @@ import Performance from "@/components/Performance";
 import StudentAttendanceCard from "@/components/StudentAttendanceCard";
 import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
+
+export const dynamic = "force-dynamic";
 import { Class, Student } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";

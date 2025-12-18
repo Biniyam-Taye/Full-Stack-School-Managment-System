@@ -8,6 +8,8 @@ import { Class, Event, Prisma } from "@prisma/client";
 import Image from "next/image";
 import { auth } from "@clerk/nextjs/server";
 
+export const dynamic = "force-dynamic";
+
 type EventList = Event & { class: Class };
 
 const EventListPage = async ({

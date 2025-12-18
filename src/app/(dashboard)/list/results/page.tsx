@@ -9,6 +9,8 @@ import Image from "next/image";
 
 import { auth } from "@clerk/nextjs/server";
 
+export const dynamic = "force-dynamic";
+
 type ResultList = {
   id: number;
   title: string;

@@ -8,6 +8,8 @@ import { Class, Grade, Prisma, Teacher } from "@prisma/client";
 import Image from "next/image";
 import { auth } from "@clerk/nextjs/server";
 
+export const dynamic = "force-dynamic";
+
 type ClassList = Class & { supervisor: Teacher } & { grade: Grade };
 
 const ClassListPage = async ({
