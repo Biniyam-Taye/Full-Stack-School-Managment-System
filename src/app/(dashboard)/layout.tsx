@@ -1,6 +1,6 @@
+import Logo from "@/components/Logo";
 import Menu from "@/components/Menu";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function DashboardLayout({
@@ -14,12 +14,12 @@ export default function DashboardLayout({
       <div className="w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%] p-4 z-10 overflow-y-auto scrollbar-hide glass-sidebar">
         <Link
           href="/"
-          className="flex items-center justify-center lg:justify-start gap-3 mb-8 group"
+          className="flex items-center justify-center lg:justify-start gap-3 mb-8"
         >
-          <div className="w-10 h-10 bg-gradient-to-br from-lamaSky to-lamaPurple rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-            <span className="text-xl">🎓</span>
+          <div className="w-10 h-10 flex items-center justify-center">
+            <Logo noBox iconOnly className="w-full h-full" />
           </div>
-          <span className="hidden lg:block font-extrabold text-xl gradient-text">
+          <span className="hidden lg:block font-black text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-lamaSky to-lamaPurple whitespace-nowrap">
             Mente&apos;s School
           </span>
         </Link>
