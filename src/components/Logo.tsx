@@ -1,66 +1,22 @@
 import React from 'react';
+import { GraduationCap } from 'lucide-react';
+import Link from 'next/link';
 
-const Logo = ({ className = "w-10 h-10", iconOnly = false, noBox = false }: { className?: string, iconOnly?: boolean, noBox?: boolean }) => {
+const Logo = ({ className = "", textColor = "text-black", iconOnly = false }: { className?: string, textColor?: string, iconOnly?: boolean }) => {
     return (
-        <div className={`flex items-center gap-3 ${className}`}>
-            <div className="relative group shrink-0 w-full h-full flex items-center justify-center">
-                {!noBox && (
-                    <div className="absolute -inset-1 bg-gradient-to-r from-lamaSky to-lamaPurple rounded-xl blur opacity-25 group-hover:opacity-100 transition duration-1000"></div>
-                )}
-
-                <div className={`relative w-full h-full flex items-center justify-center ${noBox ? '' : 'bg-white p-2 rounded-xl shadow-lg border border-slate-200 backdrop-blur-sm'} transition-all duration-300`}>
-                    <svg
-                        viewBox="0 0 24 24"
-                        className="w-full h-full object-contain"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <defs>
-                            <linearGradient id="logo-gradient-v3" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stopColor="#38bdf8" />
-                                <stop offset="100%" stopColor="#cf66ff" />
-                            </linearGradient>
-                        </defs>
-
-                        {/* The Graduation Cap - Centered and contained */}
-                        <path
-                            d="M12 4L3 9L12 14L21 9L12 4Z"
-                            fill="url(#logo-gradient-v3)"
-                        />
-                        <path
-                            d="M7 11V16C7 16 9 18.5 12 18.5C15 18.5 17 16 17 16V11"
-                            stroke="#cf66ff"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            fill="none"
-                        />
-
-                        {/* The Growth Arrow - Stylized White */}
-                        <path
-                            d="M14 11L17 8L20 11"
-                            stroke="white"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                        <path
-                            d="M17 8V14"
-                            stroke="white"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
-                </div>
+        <Link href="/" className={`flex items-center gap-3 group cursor-pointer ${className}`}>
+            <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center group-hover:bg-yellow-500 transition-colors shrink-0">
+                <GraduationCap className="w-6 h-6 text-white" />
             </div>
-
             {!iconOnly && (
-                <span className="hidden lg:block font-black text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-lamaSky to-lamaPurple whitespace-nowrap">
-                    Mente&apos;s School
-                </span>
+                <div className="flex flex-col leading-tight">
+                    <span className={`text-base font-semibold ${textColor}`}>Bini's</span>
+                    <span className="text-base font-semibold text-[#6B7AFF]">School</span>
+                </div>
             )}
-        </div>
+        </Link>
     );
 };
 
 export default Logo;
+

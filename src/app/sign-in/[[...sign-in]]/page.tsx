@@ -4,14 +4,14 @@ import * as Clerk from "@clerk/elements/common";
 import * as SignIn from "@clerk/elements/sign-in";
 import { useUser } from "@clerk/nextjs";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, Suspense, useState } from "react";
+import { useEffect, Suspense } from "react";
 import { User, GraduationCap, School, Users } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const LoginPageContent = () => {
   const { isLoaded, isSignedIn, user } = useUser();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isRedirecting, setIsRedirecting] = useState(false);
 
   // Get role from URL (default to generic if missing)
   const roleParam = searchParams.get("role");
@@ -22,35 +22,23 @@ const LoginPageContent = () => {
   useEffect(() => {
     if (!isLoaded || !isSignedIn) return;
 
-    // Trigger redirect state only after client-side hydration confirms auth
-    setIsRedirecting(true);
-
     const role = user?.publicMetadata?.role;
-    if (role && typeof role === 'string') {
-      window.location.href = `/${role.toLowerCase()}`;
-    } else {
-      window.location.href = '/';
-    }
-  }, [isLoaded, isSignedIn, user]);
 
-  // Show a loading text if authenticated but not yet redirected
-  if (isRedirecting) {
-    return (
-      <div className="h-screen flex items-center justify-center bg-[#0a0a0a] text-white">
-        <div className="flex flex-col items-center gap-6">
-          <div className="relative">
-            <div className="w-16 h-16 rounded-full border-4 border-white/10 border-t-yellow-400 animate-spin"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <GraduationCap className="w-6 h-6 text-yellow-400/50 animate-pulse" />
-            </div>
-          </div>
-          <p className="text-white/60 font-medium tracking-wide animate-pulse">
-            Accessing Portal...
-          </p>
-        </div>
-      </div>
-    );
-  }
+    console.log('Clerk User Public Metadata Role:', role);
+
+    if (typeof role === 'string' && role.trim() !== '') {
+      const currentDate = new Date().toString();
+      const redirectPath = `/${role.toLowerCase()}?date=${encodeURIComponent(currentDate)}`;
+      console.log(`Role found: ${role}. Redirecting to: ${redirectPath}`);
+      router.push(redirectPath);
+      return;
+    }
+
+    console.log("No valid role found. Redirecting to default dashboard.");
+    const currentDate = new Date().toString();
+    router.push(`/dashboard?date=${encodeURIComponent(currentDate)}`);
+
+  }, [isLoaded, isSignedIn, user, router]);
 
   // Determine which icon to show
   const getIcon = () => {
@@ -72,17 +60,9 @@ const LoginPageContent = () => {
           name="start"
           className="relative bg-white/5 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-2xl flex flex-col gap-6 min-w-[400px] border border-white/10"
         >
-          {/* Logo & Title Section */}
+          {/* Logo & Title Section - Matching Home Page */}
           <div className="flex flex-col items-center text-center gap-4 mb-4">
-            <div className="flex items-center gap-2 group cursor-pointer mb-2">
-              <div className="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center bg-white/5 group-hover:border-yellow-400/50 group-hover:bg-yellow-400/10 transition-all">
-                <GraduationCap className="w-5 h-5 text-yellow-400" />
-              </div>
-              <div className="flex flex-col items-start leading-none">
-                <span className="text-white/90 font-light text-xl tracking-tighter">Bini's</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-yellow-400 font-bold text-xl tracking-tighter">School</span>
-              </div>
-            </div>
+            <Logo textColor="text-white" />
 
             <h2 className="text-white/60 text-sm font-medium tracking-wide uppercase">
               {displayRole ? `Log in to ${displayRole} Portal` : "Sign in to your account"}

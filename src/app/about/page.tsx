@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Play, ArrowRight, Target, Lightbulb, History, Award } from "lucide-react";
+import { Play, ArrowRight, Target, Lightbulb, History, Award, School } from "lucide-react";
 import { motion } from "framer-motion";
+import Logo from "@/components/Logo";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -30,12 +31,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.5 }}
                 className="flex justify-between items-center px-6 py-6 md:px-16 md:py-8"
             >
-                <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-                    <div className="w-8 h-8 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-yellow-400 transition-colors">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                    </div>
-                    <span className="text-xl font-medium tracking-tight">Bini's School</span>
-                </Link>
+                <Logo textColor="text-white" />
 
                 <div className="hidden md:flex gap-10 text-sm font-medium text-gray-400 uppercase tracking-widest">
                     <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -84,6 +80,7 @@ export default function AboutPage() {
                             textColor="text-black"
                             title="Our Mission"
                             subtitle="Empowering Growth"
+                            description="To provide exceptional education that nurtures critical thinking, creativity, and character development. We empower every student to reach their full potential through innovative teaching methods and personalized learning experiences."
                             icon={<Target className="w-12 h-12 mb-auto opacity-80" />}
                             index="01"
                         />
@@ -92,6 +89,7 @@ export default function AboutPage() {
                             textColor="text-white"
                             title="Our Vision"
                             subtitle="Future Ready"
+                            description="To be a leading institution that shapes tomorrow's leaders and innovators. We envision a community where students are equipped with 21st-century skills, global perspectives, and the confidence to make a positive impact on the world."
                             icon={<Lightbulb className="w-12 h-12 mb-auto opacity-80" />}
                             index="02"
                         />
@@ -100,6 +98,7 @@ export default function AboutPage() {
                             textColor="text-black"
                             title="Our History"
                             subtitle="Legacy of Success"
+                            description="Founded with a vision to transform education, Bini's School has been a beacon of academic excellence for years. Our journey is marked by countless success stories, innovative programs, and a commitment to continuous improvement."
                             icon={<History className="w-12 h-12 mb-auto opacity-80" />}
                             index="03"
                         />
@@ -109,6 +108,7 @@ export default function AboutPage() {
                                 textColor="text-white"
                                 title="Awards & Recognition"
                                 subtitle="Celebrating Excellence across the globe"
+                                description="Our commitment to excellence has been recognized nationally and internationally. From academic achievements to innovative teaching practices, we've received numerous accolades that reflect our dedication to providing world-class education and fostering student success."
                                 icon={<Award className="w-12 h-12 mb-auto opacity-80" />}
                                 index="04"
                                 fullWidth
@@ -121,7 +121,7 @@ export default function AboutPage() {
     );
 }
 
-function Card({ bg, textColor, title, subtitle, icon, index, fullWidth }: any) {
+function Card({ bg, textColor, title, subtitle, description, icon, index, fullWidth }: any) {
     const variants = {
         hidden: { opacity: 0, y: 50 },
         show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "backOut" as const } }
@@ -129,7 +129,7 @@ function Card({ bg, textColor, title, subtitle, icon, index, fullWidth }: any) {
 
     return (
         <motion.div variants={variants} className={`h-full ${fullWidth ? 'w-full' : ''}`}>
-            <div className={`${bg} ${textColor} p-8 rounded-[2rem] ${fullWidth ? 'h-[250px] md:h-[300px] flex-row' : 'h-[400px] flex-col'} flex justify-between relative overflow-hidden transition-transform duration-500 hover:scale-[1.02] cursor-default`}>
+            <div className={`${bg} ${textColor} p-8 rounded-[2rem] ${fullWidth ? 'h-auto md:h-auto min-h-[250px]' : 'h-auto min-h-[450px]'} flex flex-col justify-between relative overflow-hidden transition-transform duration-500 hover:scale-[1.02] cursor-default`}>
 
                 <div className="flex justify-between items-start z-10 w-full relative">
                     <span className="font-mono text-sm opacity-60 tracking-widest">INFO_{index}</span>
@@ -146,7 +146,10 @@ function Card({ bg, textColor, title, subtitle, icon, index, fullWidth }: any) {
                         {icon}
                     </div>
                     <h3 className="text-4xl font-bold tracking-tighter mb-2 leading-none">{title}</h3>
-                    <p className="text-sm opacity-70 font-medium max-w-xs">{subtitle}</p>
+                    <p className="text-sm opacity-70 font-medium mb-3">{subtitle}</p>
+                    {description && (
+                        <p className="text-sm opacity-60 leading-relaxed max-w-2xl">{description}</p>
+                    )}
                 </div>
             </div>
         </motion.div>

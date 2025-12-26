@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { User, School, GraduationCap, Users, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Logo from "@/components/Logo";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -30,12 +31,7 @@ export default function PortalsPage() {
                 transition={{ duration: 0.5 }}
                 className="flex justify-between items-center px-6 py-6 md:px-16 md:py-8"
             >
-                <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-                    <div className="w-8 h-8 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-yellow-400 transition-colors">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                    </div>
-                    <span className="text-xl font-medium tracking-tight">Bini's School</span>
-                </Link>
+                <Logo textColor="text-white" />
 
                 <div className="hidden md:flex gap-10 text-sm font-medium text-gray-400 uppercase tracking-widest">
                     <Link href="/" className="hover:text-white transition-colors">Home</Link>

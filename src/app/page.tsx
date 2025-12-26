@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { User, GraduationCap, School, Users, Play, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { User, GraduationCap, School, Users, Play, ArrowRight, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import Logo from "@/components/Logo";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -22,6 +24,8 @@ const staggerContainer = {
 };
 
 export default function HomePage() {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
     return (
         <div className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-yellow-400 selection:text-black overflow-x-hidden">
             {/* Navbar */}
@@ -29,14 +33,9 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex justify-between items-center px-6 py-6 md:px-16 md:py-8"
+                className="flex justify-between items-center px-6 py-6 md:px-16 md:py-8 relative z-50"
             >
-                <div className="flex items-center gap-2 group cursor-pointer">
-                    <div className="w-10 h-10 rounded-full border-2 border-white/10 flex items-center justify-center bg-white/5 group-hover:border-yellow-400/50 group-hover:bg-yellow-400/10 transition-all">
-                        <GraduationCap className="w-5 h-5 text-yellow-400" />
-                    </div>
-                    <span className="text-xl font-medium tracking-tight">Bini's School</span>
-                </div>
+                <Logo textColor="text-white" />
 
                 <div className="hidden md:flex gap-10 text-sm font-medium text-gray-400 uppercase tracking-widest">
                     <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -51,12 +50,64 @@ export default function HomePage() {
                     Login
                 </Link>
 
-                {/* Mobile Menu Icon Placeholder */}
-                <div className="md:hidden space-y-1.5 cursor-pointer">
-                    <div className="w-6 h-0.5 bg-white"></div>
-                    <div className="w-8 h-0.5 bg-white"></div>
-                </div>
+                {/* Mobile Menu Icon */}
+                <button
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    className="md:hidden space-y-1.5 cursor-pointer z-50 relative"
+                    aria-label="Toggle menu"
+                >
+                    {!mobileMenuOpen ? (
+                        <>
+                            <div className="w-6 h-0.5 bg-white"></div>
+                            <div className="w-8 h-0.5 bg-white"></div>
+                        </>
+                    ) : (
+                        <X className="w-6 h-6 text-white" />
+                    )}
+                </button>
             </motion.nav>
+
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <motion.div
+                        initial={{ x: "100%" }}
+                        animate={{ x: 0 }}
+                        exit={{ x: "100%" }}
+                        transition={{ type: "tween", duration: 0.3 }}
+                        className="fixed top-0 right-0 w-full h-screen bg-[#0a0a0a] z-40 md:hidden flex flex-col items-center justify-center gap-8"
+                    >
+                        <Link
+                            href="/"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-2xl font-medium text-gray-400 hover:text-white transition-colors"
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            href="/about"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-2xl font-medium text-gray-400 hover:text-white transition-colors"
+                        >
+                            About
+                        </Link>
+                        <Link
+                            href="/portals"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-2xl font-medium text-gray-400 hover:text-white transition-colors"
+                        >
+                            Portals
+                        </Link>
+                        <Link
+                            href="/sign-in"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="px-8 py-3 bg-yellow-400 text-black text-lg font-bold rounded-full hover:bg-white transition-colors"
+                        >
+                            Login
+                        </Link>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Hero Section */}
             <main className="w-full px-6 md:px-16 pt-12 md:pt-20 pb-20 relative">
@@ -66,25 +117,33 @@ export default function HomePage() {
                     initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
                     animate={{ opacity: 1, scale: 1, rotate: 0 }}
                     transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="absolute -top-10 md:-top-24 -right-24 md:right-0 w-[350px] h-[350px] md:w-[800px] md:h-[800px] pointer-events-none z-0"
+                    className="absolute top-32 right-4 w-[180px] h-[180px] md:-top-32 md:right-0 md:w-[800px] md:h-[800px] pointer-events-none z-0"
                 >
                     <div className="relative w-full h-full flex items-center justify-center">
                         {/* Glowing Gradient Background */}
-                        <div className="absolute w-[80%] h-[80%] rounded-full bg-gradient-to-tr from-blue-600 via-purple-500 to-yellow-400 blur-[100px] opacity-30 animate-pulse"></div>
+                        <div className="absolute w-[80%] h-[80%] rounded-3xl bg-gradient-to-tr from-blue-600 via-purple-500 to-yellow-400 blur-[100px] opacity-30 animate-pulse"></div>
 
-                        {/* Circular Image Container */}
-                        <div className="relative w-[220px] h-[220px] md:w-[450px] md:h-[450px] rounded-full shadow-2xl shadow-blue-900/20">
-                            <div className="w-full h-full rounded-full overflow-hidden relative">
-                                <Image
-                                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop"
-                                    alt="Students studying"
-                                    fill
-                                    className="object-cover opacity-90 hover:scale-105 transition-transform duration-700"
-                                />
+                        {/* Rounded Rectangle Image Container with Soft Fade Effect */}
+                        <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px]">
+                            <div
+                                className="w-full h-full relative rounded-3xl"
+                                style={{
+                                    maskImage: 'radial-gradient(ellipse 100% 100% at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0) 100%)',
+                                    WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0) 100%)'
+                                }}
+                            >
+                                <div className="w-full h-full rounded-3xl overflow-hidden">
+                                    <Image
+                                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop"
+                                        alt="Students studying"
+                                        fill
+                                        className="object-cover opacity-90 hover:scale-105 transition-transform duration-700"
+                                    />
+                                </div>
                             </div>
 
                             {/* Floating Orbital Elements */}
-                            <div className="absolute top-0 left-0 w-full h-full rounded-full border border-white/5 animate-spin-slow pointer-events-none"></div>
+                            <div className="absolute top-0 left-0 w-full h-full rounded-3xl border border-white/5 animate-spin-slow pointer-events-none"></div>
                             <div className="absolute -top-4 -right-4 w-20 h-20 bg-yellow-400/20 rounded-full blur-xl"></div>
                         </div>
                     </div>
