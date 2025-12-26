@@ -10,7 +10,7 @@ const Logo = ({ className = "", textColor = "text-black", iconOnly = false }: { 
             </div>
             {!iconOnly && (
                 <div className="flex flex-col leading-tight">
-                    <span className={`text-base font-semibold ${textColor}`}>Bini's</span>
+                    <span className={`text-base font-semibold ${textColor}`}>Bini&apos;s</span>
                     <span className="text-base font-semibold text-[#6B7AFF]">School</span>
                 </div>
             )}

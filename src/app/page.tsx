@@ -164,7 +164,7 @@ export default function HomePage() {
 
                         <motion.div variants={fadeInUp} className="relative mb-6">
                             <h1 className="text-7xl md:text-[8rem] leading-[0.9] font-light tracking-tighter text-white/90">
-                                Bini's
+                                Bini&apos;s
                             </h1>
                             <h1 className="text-7xl md:text-[8rem] leading-[0.9] font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-yellow-400 pb-4">
                                 School

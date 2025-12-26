@@ -63,7 +63,7 @@ export default function AboutPage() {
                             Redefining <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">Education</span>
                         </motion.h1>
                         <motion.p variants={fadeInUp} className="text-gray-400 text-xl max-w-2xl leading-relaxed">
-                            At Bini's School, we believe in fostering a culture of innovation, excellence, and community. We are more than just a school; we are a launchpad for the future leaders of the world.
+                            At Bini&apos;s School, we believe in fostering a culture of innovation, excellence, and community. We are more than just a school; we are a launchpad for the future leaders of the world.
                         </motion.p>
                     </motion.div>
 
@@ -89,7 +89,7 @@ export default function AboutPage() {
                             textColor="text-white"
                             title="Our Vision"
                             subtitle="Future Ready"
-                            description="To be a leading institution that shapes tomorrow's leaders and innovators. We envision a community where students are equipped with 21st-century skills, global perspectives, and the confidence to make a positive impact on the world."
+                            description="To be a leading institution that shapes tomorrow&apos;s leaders and innovators. We envision a community where students are equipped with 21st-century skills, global perspectives, and the confidence to make a positive impact on the world."
                             icon={<Lightbulb className="w-12 h-12 mb-auto opacity-80" />}
                             index="02"
                         />
@@ -98,7 +98,7 @@ export default function AboutPage() {
                             textColor="text-black"
                             title="Our History"
                             subtitle="Legacy of Success"
-                            description="Founded with a vision to transform education, Bini's School has been a beacon of academic excellence for years. Our journey is marked by countless success stories, innovative programs, and a commitment to continuous improvement."
+                            description="Founded with a vision to transform education, Bini&apos;s School has been a beacon of academic excellence for years. Our journey is marked by countless success stories, innovative programs, and a commitment to continuous improvement."
                             icon={<History className="w-12 h-12 mb-auto opacity-80" />}
                             index="03"
                         />
