@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import { BarChart as BarChartIcon, MoreHorizontal } from "lucide-react";
 import {
   BarChart,
   Bar,
@@ -22,12 +22,12 @@ const AttendanceChart = ({
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
-            <span className="text-white text-lg">📊</span>
+            <BarChartIcon className="text-white w-6 h-6" />
           </div>
           <h1 className="text-lg font-bold text-gray-800">Attendance</h1>
         </div>
         <div className="p-2 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
-          <Image src="/moreDark.png" alt="" width={18} height={18} className="opacity-50 hover:opacity-100" />
+          <MoreHorizontal className="text-gray-500 w-5 h-5" />
         </div>
       </div>
       <ResponsiveContainer width="100%" height="90%">

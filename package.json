@@ -2,6 +2,19 @@
   "name": "lama-dev-next-dashboard",
   "version": "0.1.0",
   "private": true,
+  "description": "First, run the development server:",
+  "homepage": "https://github.com/mente21/full-stack-school-main#readme",
+  "bugs": {
+    "url": "https://github.com/mente21/full-stack-school-main/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mente21/full-stack-school-main.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "npx prisma generate && next build",
@@ -14,6 +27,8 @@
     "@hookform/resolvers": "^3.9.0",
     "@prisma/client": "^5.19.1",
     "@types/react-big-calendar": "^1.8.9",
+    "framer-motion": "^12.23.26",
+    "lucide-react": "^0.562.0",
     "moment": "^2.30.1",
     "next": "14.2.25",
     "next-cloudinary": "^6.13.0",

@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import { Users } from "lucide-react";
 import {
   RadialBarChart,
   RadialBar,
@@ -40,13 +40,9 @@ const CountChart = ({ boys, girls }: { boys: number; girls: number }) => {
           <RadialBar background dataKey="count" />
         </RadialBarChart>
       </ResponsiveContainer>
-      <Image
-        src="/maleFemale.png"
-        alt=""
-        width={50}
-        height={50}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-      />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <Users className="text-gray-400 w-12 h-12 relative -left-[2px]" />
+      </div>
     </div>
   );
 };

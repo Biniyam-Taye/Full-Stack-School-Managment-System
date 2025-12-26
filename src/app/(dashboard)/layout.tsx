@@ -1,4 +1,4 @@
-import Logo from "@/components/Logo";
+import { School } from "lucide-react";
 import Menu from "@/components/Menu";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
@@ -16,11 +16,11 @@ export default function DashboardLayout({
           href="/"
           className="flex items-center justify-center lg:justify-start gap-3 mb-8"
         >
-          <div className="w-10 h-10 flex items-center justify-center">
-            <Logo noBox iconOnly className="w-full h-full" />
+          <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-lamaSky to-lamaPurple rounded-lg shadow-md">
+            <School className="text-white w-6 h-6" />
           </div>
           <span className="hidden lg:block font-black text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-lamaSky to-lamaPurple whitespace-nowrap">
-            Mente&apos;s School
+            Bini&apos;s School
           </span>
         </Link>
         <Menu />

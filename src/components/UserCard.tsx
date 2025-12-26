@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import Image from "next/image";
+import { MoreHorizontal } from "lucide-react";
 
 const UserCard = async ({
   type,
@@ -40,7 +40,7 @@ const UserCard = async ({
           2024/25
         </span>
         <div className={`${iconBgMap[type]} p-2 rounded-full backdrop-blur-sm`}>
-          <Image src="/more.png" alt="" width={16} height={16} className="brightness-0 invert opacity-80 hover:opacity-100 transition-opacity cursor-pointer" />
+          <MoreHorizontal className="text-white w-4 h-4" />
         </div>
       </div>
 

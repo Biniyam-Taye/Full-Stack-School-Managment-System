@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
+import { Megaphone } from "lucide-react";
 
 const Announcements = async () => {
   const { userId, sessionClaims } = await auth();
@@ -50,7 +51,7 @@ const Announcements = async () => {
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-br from-lamaPurple to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
-            <span className="text-white text-lg">📢</span>
+            <Megaphone className="text-white w-5 h-5" />
           </div>
           <h1 className="text-xl font-bold text-gray-800">Announcements</h1>
         </div>

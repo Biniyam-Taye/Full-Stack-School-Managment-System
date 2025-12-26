@@ -1,93 +1,93 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { SignOutButton } from "@clerk/nextjs";
-import Image from "next/image";
 import Link from "next/link";
 import SidebarItem from "./SidebarItem";
+import { LogOut } from "lucide-react";
 
 const menuItems = [
   {
     title: "MENU",
     items: [
       {
-        icon: "/home.png",
+        icon: "home",
         label: "Home",
         href: "/",
         visible: ["admin", "teacher", "student", "parent", "guest"],
       },
       {
-        icon: "/teacher.png",
+        icon: "teacher",
         label: "Teachers",
         href: "/list/teachers",
         visible: ["admin", "teacher", "student", "guest"],
       },
       {
-        icon: "/student.png",
+        icon: "student",
         label: "Students",
         href: "/list/students",
         visible: ["admin", "teacher", "student", "guest"],
       },
       {
-        icon: "/parent.png",
+        icon: "parent",
         label: "Parents",
         href: "/list/parents",
         visible: ["admin", "teacher", "student", "guest"],
       },
       {
-        icon: "/singleBranch.png",
+        icon: "subject",
         label: "Subjects",
         href: "/list/subjects",
         visible: ["admin"],
       },
       {
-        icon: "/class.png",
+        icon: "class",
         label: "Classes",
         href: "/list/classes",
         visible: ["admin", "teacher", "student", "guest"],
       },
       {
-        icon: "/lesson.png",
+        icon: "lesson",
         label: "Lessons",
         href: "/list/lessons",
         visible: ["admin", "teacher", "student", "guest"],
       },
       {
-        icon: "/exam.png",
+        icon: "exam",
         label: "Exams",
         href: "/list/exams",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assignment.png",
+        icon: "assignment",
         label: "Assignments",
         href: "/list/assignments",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/exam.png",
+        icon: "result",
         label: "Results",
         href: "/list/results",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/attendance.png",
+        icon: "attendance",
         label: "Attendance",
         href: "/list/attendance",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/calendar.png",
+        icon: "event",
         label: "Events",
         href: "/list/events",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/message.png",
+        icon: "message",
         label: "Messages",
         href: "/list/messages",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/announcement.png",
+        icon: "announcement",
         label: "Announcements",
         href: "/list/announcements",
         visible: ["admin", "teacher", "student", "parent"],
@@ -98,19 +98,19 @@ const menuItems = [
     title: "OTHER",
     items: [
       {
-        icon: "/profile.png",
+        icon: "profile",
         label: "Profile",
         href: "/profile",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/setting.png",
+        icon: "setting",
         label: "Settings",
         href: "/settings",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/logout.png",
+        icon: "logout",
         label: "Logout",
         href: "/logout",
         visible: ["admin", "teacher", "student", "parent"],
@@ -142,7 +142,7 @@ const Menu = async () => {
                 return (
                   <SignOutButton redirectUrl="/sign-in" key={item.label}>
                     <div className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-3 md:px-4 rounded-xl hover:bg-red-50 hover:text-red-500 transition-all duration-300 cursor-pointer group">
-                      <Image src={item.icon} alt="" width={22} height={22} className="opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                      <LogOut size={22} className="opacity-50 group-hover:opacity-100 transition-all duration-300" />
                       <span className="hidden lg:block font-medium tracking-wide group-hover:translate-x-1 transition-transform">Logout</span>
                     </div>
                   </SignOutButton>
