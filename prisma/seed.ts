@@ -2,6 +2,11 @@ import { Day, PrismaClient, UserSex } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
+  // CLEANUP
+  console.log("Cleaning up database...");
+  await prisma.$executeRawUnsafe(`TRUNCATE TABLE "Announcement", "Event", "Attendance", "Result", "Assignment", "Exam", "Student", "Parent", "Lesson", "Teacher", "Subject", "Class", "Grade", "Admin" RESTART IDENTITY CASCADE;`);
+  console.log("Cleanup complete.");
+
   // ADMIN
   await prisma.admin.create({
     data: {

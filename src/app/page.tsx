@@ -32,8 +32,8 @@ export default function HomePage() {
                 className="flex justify-between items-center px-6 py-6 md:px-16 md:py-8"
             >
                 <div className="flex items-center gap-2 group cursor-pointer">
-                    <div className="w-8 h-8 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-yellow-400 transition-colors">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <div className="w-10 h-10 rounded-full border-2 border-white/10 flex items-center justify-center bg-white/5 group-hover:border-yellow-400/50 group-hover:bg-yellow-400/10 transition-all">
+                        <GraduationCap className="w-5 h-5 text-yellow-400" />
                     </div>
                     <span className="text-xl font-medium tracking-tight">Bini's School</span>
                 </div>
@@ -66,14 +66,14 @@ export default function HomePage() {
                     initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
                     animate={{ opacity: 1, scale: 1, rotate: 0 }}
                     transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="absolute top-0 right-0 w-[500px] h-[500px] md:w-[800px] md:h-[800px] pointer-events-none z-0"
+                    className="absolute -top-10 md:-top-24 -right-24 md:right-0 w-[350px] h-[350px] md:w-[800px] md:h-[800px] pointer-events-none z-0"
                 >
                     <div className="relative w-full h-full flex items-center justify-center">
                         {/* Glowing Gradient Background */}
                         <div className="absolute w-[80%] h-[80%] rounded-full bg-gradient-to-tr from-blue-600 via-purple-500 to-yellow-400 blur-[100px] opacity-30 animate-pulse"></div>
 
                         {/* Circular Image Container */}
-                        <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full shadow-2xl shadow-blue-900/20">
+                        <div className="relative w-[220px] h-[220px] md:w-[450px] md:h-[450px] rounded-full shadow-2xl shadow-blue-900/20">
                             <div className="w-full h-full rounded-full overflow-hidden relative">
                                 <Image
                                     src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop"
